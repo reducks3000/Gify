@@ -17,7 +17,17 @@ $.ajax({url: queryURL, method: "GET"}).done(function(response){
         let animated = response.data[i].images.fixed_height.url;
         let still = response.data[i].images.fixed_height_still.url;
         let gifImg = $('<img class="gifImg">');
+    
+//setting gifs to still on load
+        gifImg.attr('src', still);
+        gifImg.attr('data-still', still);
+        gifImg.attr('data-animate', animated);
+        gifImg.attr('data-state', 'still');
+//ratings for each gif
+        gifDiv.append(ratingDiv);
+        gifDiv.prepend(gifImg);
+        $('#gifDump').prepend(gifDiv);
     }
-
 });
 };
+
